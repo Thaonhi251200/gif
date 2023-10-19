@@ -1,0 +1,52 @@
+<!-- 
+    JSX -> Javascript XML -> bộ phân tích cú pháp chuyển thành javascript
+    1. Luôn dung React.createElement()? vấn đề?
+    2. JSX? Live demo: https://bit.ly/2VOIMN7
+    3. JSX không phải là HTML,
+    cần có Javascript, Babel để dùng  JSX -> Bable là thư viện chuyển đổi ES6 thành ES5
+    4. JSX và React-DOM?
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel"> // phải đổi kiểu dữ liệu thành 'text/babel' thì mới thực thi được mặc định là 'text/javascrpit'
+        const courses = [
+            {
+                name: 'HTML,CSS'
+            },
+            {
+                name: 'Reponsive'
+            },
+            {
+                name: 'ReactJS'
+            }
+        ]
+        // bài tập: đưa từng thành phần của mảng vào trong ul là từng li
+        const ul1 = <ul> {
+            courses.map((courses,index)=>
+            <li key={index} > {courses.name}</li>)
+        }
+        </ul>
+        
+        // ReactDOM.render(ul, document.getElementById('root')) // @17
+        const contain = document.getElementById('root')
+        const root = ReactDOM.createRoot(contain)
+        // root.render(ul)
+        root.render(ul1)
+    </script>
+
+
+</body>
+
+</html>

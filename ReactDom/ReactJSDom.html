@@ -1,0 +1,65 @@
+<!-- thư viện React-DOM -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        1. Tại sao phải sử dụng React DOM? -> là cầu nối giữa React và DOM
+        2. Tại sao phải Tách React và DOM ra? -> 
+     -->
+    <div id="root"></div>
+    <script>
+        // tao Creact Element
+        const divDom = React.createElement('div',
+            {
+                className: 'post-item'
+            },
+            React.createElement(
+                'h2',
+                { title: 'Hoc ReactJS tai F8 ' },
+                'Hoc ReactJS'),
+            React.createElement(
+                'p',
+                {},
+                'Hoc ReactJS tu co ban toi nang cao')
+        )
+        const h1DOM = React.createElement('h1',
+            {
+                title: 'Hello', className: 'heading'
+            },
+            'Hello guys')
+        const ulDOM = React.createElement('ul',
+        {},
+        React.createElement('li',
+        {
+            className: 'li1'
+        },'Javascript'),
+        React.createElement('li',
+        {
+            className:'li2'
+        },'ReactJS')
+        )    
+        // get root element
+        const container = document.getElementById('root')
+        // React-Dom --> render UI
+        // ReactDOM.render(divDom, container) // React-DOM @17
+
+        // React-DOM @18
+        const root = ReactDOM.createRoot(container)
+        root.render(divDom)
+        root.render(h1DOM)
+        root.render(ulDOM)
+
+
+    </script>
+</body>
+
+</html>
